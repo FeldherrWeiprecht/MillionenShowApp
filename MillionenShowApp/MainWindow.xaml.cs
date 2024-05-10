@@ -16,6 +16,8 @@ namespace MillionenShowApp
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private char correctAnswer;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -37,7 +39,7 @@ namespace MillionenShowApp
 			answerButtonB.Content = actualQuestion.AnswerB;
 			answerButtonC.Content = actualQuestion.AnswerC;
 			answerButtonD.Content = actualQuestion.AnswerD;
-
+			correctAnswer = char.Parse(actualQuestion.CorrectAnswer.Trim());
 		}
 
 		private void DisableAnswerButtons()
@@ -59,54 +61,80 @@ namespace MillionenShowApp
 		private async void answerButtonA_Click(object sender, RoutedEventArgs e)
 		{
 			DisableAnswerButtons();
-
-			answerButtonA.Background = Brushes.Green;
+			if(this.correctAnswer == 'A')
+			{
+				answerButtonA.Background = Brushes.Green;
+			}
+			else
+			{
+				answerButtonA.Background = Brushes.Red;
+			}
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
 			answerButtonA.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
-
 			EnableAnswerButtons();
+			SetUiElementsContent();
 
 		}
 
 		private async void answerButtonB_Click(object sender, RoutedEventArgs e)
 		{
 			DisableAnswerButtons();
+			if (this.correctAnswer == 'B')
+			{
+				answerButtonB.Background = Brushes.Green;
 
-			answerButtonB.Background = Brushes.Green;
+			}
+			else
+			{
+				answerButtonB.Background = Brushes.Red;
+			}
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
 			answerButtonB.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
-
 			EnableAnswerButtons();
+			SetUiElementsContent();
 		}
 
 		private async void answerButtonC_Click(object sender, RoutedEventArgs e)
 		{
 			DisableAnswerButtons();
-
-			answerButtonC.Background = Brushes.Green;
+			if (this.correctAnswer == 'C')
+			{
+				answerButtonC.Background = Brushes.Green;
+			}
+			else
+			{
+				answerButtonC.Background = Brushes.Red;
+			}
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
 			answerButtonC.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
-
-			EnableAnswerButtons();
+			EnableAnswerButtons(); 
+			SetUiElementsContent();
 		}
 
 		private async void answerButtonD_Click(object sender, RoutedEventArgs e)
 		{
 			DisableAnswerButtons();
-
-			answerButtonD.Background = Brushes.Green;
+			if (this.correctAnswer == 'D')
+			{
+				answerButtonD.Background = Brushes.Green;
+			}
+			else
+			{
+				answerButtonD.Background = Brushes.Red;
+			}
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
 			answerButtonD.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
-
 			EnableAnswerButtons();
+			SetUiElementsContent();
 		}
+
 	}
 }

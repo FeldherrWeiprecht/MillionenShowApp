@@ -35,11 +35,12 @@ namespace MillionenShowApp
 						this.AnswerB = reader.GetString(3);
 						this.AnswerC = reader.GetString(4);
 						this.AnswerD = reader.GetString(5);
-						this.CorrectAnswer = reader.GetString(5); 
+						this.CorrectAnswer = reader.GetString(6); 
 					}
 				}
 					connection.Close();
 			}
 		}
+
 	}
 }
