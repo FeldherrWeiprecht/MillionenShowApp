@@ -31,7 +31,7 @@
     </Window.Resources>
     
     
-    <Grid Background="#FEDCDB">
+    <Grid x:Name="main" Background="#FEDCDB">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>

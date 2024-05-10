@@ -19,9 +19,28 @@ namespace MillionenShowApp
 		public MainWindow()
 		{
 			InitializeComponent();
+			SetUiElementsContent();
 		}
 
-		private void disableAnswerButtons()
+		private Question MakeNewQuestion()
+		{
+			var actualQuestion = new Question();
+			return actualQuestion;
+		}
+
+		private void SetUiElementsContent()
+		{
+			var actualQuestion =  MakeNewQuestion();
+
+			questionBlock.Text = actualQuestion.Content;
+			answerButtonA.Content = actualQuestion.AnswerA;
+			answerButtonB.Content = actualQuestion.AnswerB;
+			answerButtonC.Content = actualQuestion.AnswerC;
+			answerButtonD.Content = actualQuestion.AnswerD;
+
+		}
+
+		private void DisableAnswerButtons()
 		{
 			answerButtonA.IsEnabled = false;
 			answerButtonB.IsEnabled = false;
@@ -29,7 +48,7 @@ namespace MillionenShowApp
 			answerButtonD.IsEnabled = false;
 		}
 
-		private void enableAnswerButtons()
+		private void EnableAnswerButtons()
 		{
 			answerButtonA.IsEnabled = true;
 			answerButtonB.IsEnabled = true;
@@ -39,7 +58,7 @@ namespace MillionenShowApp
 
 		private async void answerButtonA_Click(object sender, RoutedEventArgs e)
 		{
-			disableAnswerButtons();
+			DisableAnswerButtons();
 
 			answerButtonA.Background = Brushes.Green;
 
@@ -47,13 +66,13 @@ namespace MillionenShowApp
 
 			answerButtonA.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 
-			enableAnswerButtons();
+			EnableAnswerButtons();
 
 		}
 
 		private async void answerButtonB_Click(object sender, RoutedEventArgs e)
 		{
-			disableAnswerButtons();
+			DisableAnswerButtons();
 
 			answerButtonB.Background = Brushes.Green;
 
@@ -61,12 +80,12 @@ namespace MillionenShowApp
 
 			answerButtonB.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 
-			enableAnswerButtons();
+			EnableAnswerButtons();
 		}
 
 		private async void answerButtonC_Click(object sender, RoutedEventArgs e)
 		{
-			disableAnswerButtons();
+			DisableAnswerButtons();
 
 			answerButtonC.Background = Brushes.Green;
 
@@ -74,12 +93,12 @@ namespace MillionenShowApp
 
 			answerButtonC.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 
-			enableAnswerButtons();
+			EnableAnswerButtons();
 		}
 
 		private async void answerButtonD_Click(object sender, RoutedEventArgs e)
 		{
-			disableAnswerButtons();
+			DisableAnswerButtons();
 
 			answerButtonD.Background = Brushes.Green;
 
@@ -87,7 +106,7 @@ namespace MillionenShowApp
 
 			answerButtonD.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 
-			enableAnswerButtons();
+			EnableAnswerButtons();
 		}
 	}
 }
