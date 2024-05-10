@@ -8,13 +8,12 @@
         Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-
         <Style TargetType="Button" x:Key="answerButton">
             <Setter Property="Margin" Value="20"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="20" Background="#FFFFFF" x:Name="border">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}" x:Name="border">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
 
@@ -45,11 +44,11 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock x:Name="questionBlock" Text="Ich bin eine Frage" FontFamily="/src/#Oswald" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26"/>
-        
-        <Button x:Name="answerButtonA" Grid.Row="1" Grid.Column="0" Style="{StaticResource answerButton}"/>
-        <Button x:Name="answerButtonB" Grid.Row="1" Grid.Column="1" Style="{StaticResource answerButton}"/>
-        <Button x:Name="answerButtonC" Grid.Row="2" Grid.Column="0" Style="{StaticResource answerButton}"/>
-        <Button x:Name="answerButtonD" Grid.Row="2" Grid.Column="1" Style="{StaticResource answerButton}"/>
+
+        <Button x:Name="answerButtonA" Grid.Row="1" Grid.Column="0" Background="#FFFFFF" Style="{StaticResource answerButton}" Click="answerButtonA_Click"/>
+        <Button x:Name="answerButtonB" Grid.Row="1" Grid.Column="1" Background="#FFFFFF" Style="{StaticResource answerButton}" Click="answerButtonB_Click"/>
+        <Button x:Name="answerButtonC" Grid.Row="2" Grid.Column="0" Background="#FFFFFF" Style="{StaticResource answerButton}" Click="answerButtonC_Click"/>
+        <Button x:Name="answerButtonD" Grid.Row="2" Grid.Column="1" Background="#FFFFFF" Style="{StaticResource answerButton}" Click="answerButtonD_Click"/>
 
     </Grid>
 </Window>
