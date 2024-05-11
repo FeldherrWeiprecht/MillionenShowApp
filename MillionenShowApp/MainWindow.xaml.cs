@@ -87,11 +87,15 @@ namespace MillionenShowApp
 			if (this.correctAnswer == 'B')
 			{
 				answerButtonB.Background = Brushes.Green;
+				this.actualQuestion.CountSolvedCorrect += 1;
 			}
 			else
 			{
 				answerButtonB.Background = Brushes.Red;
+				this.actualQuestion.CountSolvedWrong += 1;
 			}
+
+			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
@@ -106,11 +110,15 @@ namespace MillionenShowApp
 			if (this.correctAnswer == 'C')
 			{
 				answerButtonC.Background = Brushes.Green;
+				this.actualQuestion.CountSolvedCorrect += 1;
 			}
 			else
 			{
 				answerButtonC.Background = Brushes.Red;
+				this.actualQuestion.CountSolvedWrong += 1;
 			}
+
+			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
@@ -125,11 +133,15 @@ namespace MillionenShowApp
 			if (this.correctAnswer == 'D')
 			{
 				answerButtonD.Background = Brushes.Green;
+				this.actualQuestion.CountSolvedCorrect += 1;
 			}
 			else
 			{
 				answerButtonD.Background = Brushes.Red;
+				this.actualQuestion.CountSolvedWrong += 1;
 			}
+
+			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
