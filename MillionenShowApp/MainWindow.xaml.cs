@@ -17,6 +17,7 @@ namespace MillionenShowApp
 	public partial class MainWindow : Window
 	{
 		private char correctAnswer;
+		private Question actualQuestion;
 
 		public MainWindow()
 		{
@@ -24,22 +25,20 @@ namespace MillionenShowApp
 			SetUiElementsContent();
 		}
 
-		private Question MakeNewQuestion()
+		private void MakeNewQuestion()
 		{
-			var actualQuestion = new Question();
-			return actualQuestion;
+			this.actualQuestion = new Question();
 		}
 
 		private void SetUiElementsContent()
 		{
-			var actualQuestion =  MakeNewQuestion();
-
-			questionBlock.Text = actualQuestion.Content;
-			answerButtonA.Content = actualQuestion.AnswerA;
-			answerButtonB.Content = actualQuestion.AnswerB;
-			answerButtonC.Content = actualQuestion.AnswerC;
-			answerButtonD.Content = actualQuestion.AnswerD;
-			correctAnswer = char.Parse(actualQuestion.CorrectAnswer.Trim());
+			MakeNewQuestion();
+			questionBlock.Text = this.actualQuestion.Content;
+			answerButtonA.Content = this.actualQuestion.AnswerA;
+			answerButtonB.Content = this.actualQuestion.AnswerB;
+			answerButtonC.Content = this.actualQuestion.AnswerC;
+			answerButtonD.Content = this.actualQuestion.AnswerD;
+			correctAnswer = char.Parse(this.actualQuestion.CorrectAnswer.Trim());
 		}
 
 		private void DisableAnswerButtons()
@@ -64,11 +63,15 @@ namespace MillionenShowApp
 			if(this.correctAnswer == 'A')
 			{
 				answerButtonA.Background = Brushes.Green;
+				this.actualQuestion.CountSolvedCorrect += 1;
 			}
 			else
 			{
 				answerButtonA.Background = Brushes.Red;
+				this.actualQuestion.CountSolvedWrong += 1;
 			}
+
+			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(3));
 
@@ -84,7 +87,6 @@ namespace MillionenShowApp
 			if (this.correctAnswer == 'B')
 			{
 				answerButtonB.Background = Brushes.Green;
-
 			}
 			else
 			{

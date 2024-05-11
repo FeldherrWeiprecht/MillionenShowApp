@@ -13,6 +13,7 @@
             <Setter Property="Background" Value="#FFFFFF"/>
             <Setter Property="FontSize" Value="22"/>
             <Setter Property="FontFamily" Value="/src/#PTSerif"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
