@@ -18,6 +18,7 @@ namespace MillionenShowApp
 	{
 		private char correctAnswer;
 		private Question actualQuestion;
+		private int sleepingTime;
 
 		public MainWindow()
 		{
@@ -73,7 +74,7 @@ namespace MillionenShowApp
 
 			this.actualQuestion.SaveSolvedState();
 
-			await Task.Delay(TimeSpan.FromSeconds(3));
+			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
 			answerButtonA.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 			EnableAnswerButtons();
@@ -97,7 +98,7 @@ namespace MillionenShowApp
 
 			this.actualQuestion.SaveSolvedState();
 
-			await Task.Delay(TimeSpan.FromSeconds(3));
+			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
 			answerButtonB.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 			EnableAnswerButtons();
@@ -120,7 +121,7 @@ namespace MillionenShowApp
 
 			this.actualQuestion.SaveSolvedState();
 
-			await Task.Delay(TimeSpan.FromSeconds(3));
+			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
 			answerButtonC.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 			EnableAnswerButtons(); 
@@ -143,12 +144,17 @@ namespace MillionenShowApp
 
 			this.actualQuestion.SaveSolvedState();
 
-			await Task.Delay(TimeSpan.FromSeconds(3));
+			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
 			answerButtonD.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
 			EnableAnswerButtons();
 			SetUiElementsContent();
 		}
 
+		private void statisticWindowConnection_Click(object sender, RoutedEventArgs e)
+		{
+			var statisticWindow = new StatisticWindow(this);
+			statisticWindow.ShowDialog();
+		}
 	}
 }

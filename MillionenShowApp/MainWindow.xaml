@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MillionenShowApp"
         mc:Ignorable="d"
-        Title="MellonenShow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MellonenShow" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style TargetType="Button" x:Key="answerButton">
@@ -17,16 +17,17 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
+                        
                         <Border CornerRadius="20" Background="{TemplateBinding Background}" x:Name="border">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         </Border>
-
+                        
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#FFE5E5"/>
                             </Trigger>
-                           
                         </ControlTemplate.Triggers>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -37,8 +38,9 @@
     
     <Grid x:Name="main" Background="#FEDCDB">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -53,6 +55,8 @@
         <Button x:Name="answerButtonB" Grid.Row="1" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonB_Click"/>
         <Button x:Name="answerButtonC" Grid.Row="2" Grid.Column="0" Style="{StaticResource answerButton}" Click="answerButtonC_Click"/>
         <Button x:Name="answerButtonD" Grid.Row="2" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonD_Click"/>
+
+        <Button x:Name="statisticWindowConnection" Grid.Row="3" Grid.Column="1" Content="... zur Fragen Statistik" FontFamily="/src/#Oswald" FontSize="20" Margin="100,10,50,10" Click="statisticWindowConnection_Click" Background="AliceBlue" BorderBrush="Purple"/>
 
     </Grid>
 </Window>
