@@ -6,7 +6,7 @@ namespace MillionenShowApp
 {
 	internal class Question
 	{
-		public int id;
+		private int id;
 		public string Content { get; set; }
 		public string AnswerA { get; set; }
 		public string AnswerB { get; set; }
@@ -22,27 +22,29 @@ namespace MillionenShowApp
 			{
 				connection.Open();
 
-				SqliteCommand command = connection.CreateCommand();
-				command.CommandText = @"SELECT * FROM tblQuestions ORDER BY RANDOM() LIMIT 1;";
-
-				using (SqliteDataReader reader = command.ExecuteReader())
+				string query = @"SELECT * FROM tblQuestions ORDER BY RANDOM() LIMIT 1;";
+				using (SqliteCommand command = new SqliteCommand(query, connection))
 				{
-					while (reader.Read())
+					using (SqliteDataReader reader = command.ExecuteReader())
 					{
-						id = reader.GetInt32(0);
-						Content = reader.GetString(1);
-						AnswerA = reader.GetString(2);
-						AnswerB = reader.GetString(3);
-						AnswerC = reader.GetString(4);
-						AnswerD = reader.GetString(5);
-						CorrectAnswer = reader.GetString(6);
-						CountSolvedCorrect = reader.GetInt32(7);
-						CountSolvedWrong = reader.GetInt32(8);
+						while (reader.Read())
+						{
+							this.id = reader.GetInt32(0);
+							this.Content = reader.GetString(1);
+							this.AnswerA = reader.GetString(2);
+							this.AnswerB = reader.GetString(3);
+							this.AnswerC = reader.GetString(4);
+							this.AnswerD = reader.GetString(5);
+							this.CorrectAnswer = reader.GetString(6);
+							this.CountSolvedCorrect = reader.GetInt32(7);
+							this.CountSolvedWrong = reader.GetInt32(8);
+						}
 					}
 				}
 			}
 		}
-			
+
+
 		public void SaveSolvedState()
 		{
 			using (SqliteConnection connection = new SqliteConnection("Data Source=src/quiz.db"))
