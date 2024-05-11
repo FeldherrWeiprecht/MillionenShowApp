@@ -18,7 +18,7 @@ namespace MillionenShowApp
 	{
 		private char correctAnswer;
 		private Question actualQuestion;
-		private int sleepingTime;
+		private int sleepingTime = 3;
 
 		public MainWindow()
 		{
@@ -76,7 +76,7 @@ namespace MillionenShowApp
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
-			answerButtonA.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+			answerButtonA.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FDBD9B"));
 			EnableAnswerButtons();
 			SetUiElementsContent();
 
@@ -100,7 +100,7 @@ namespace MillionenShowApp
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
-			answerButtonB.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+			answerButtonB.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FDBD9B"));
 			EnableAnswerButtons();
 			SetUiElementsContent();
 		}
@@ -123,7 +123,7 @@ namespace MillionenShowApp
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
-			answerButtonC.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+			answerButtonC.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FDBD9B"));
 			EnableAnswerButtons(); 
 			SetUiElementsContent();
 		}
@@ -146,7 +146,7 @@ namespace MillionenShowApp
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
-			answerButtonD.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+			answerButtonD.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FDBD9B"));
 			EnableAnswerButtons();
 			SetUiElementsContent();
 		}
