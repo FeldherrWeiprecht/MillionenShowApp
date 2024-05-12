@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,9 @@ namespace MillionenShowApp
 		public StatisticWindow(Window window)
 		{
 			InitializeComponent();
+		
 		}
+
+
 	}
 }

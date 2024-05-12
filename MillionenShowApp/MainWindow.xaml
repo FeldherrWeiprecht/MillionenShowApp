@@ -18,7 +18,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         
-                        <Border CornerRadius="20" Background="{TemplateBinding Background}" x:Name="border">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}" x:Name="border" Cursor="Hand">
                             <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
                         </Border>
                         

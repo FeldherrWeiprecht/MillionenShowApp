@@ -17,23 +17,26 @@ namespace MillionenShowApp
 	public partial class MainWindow : Window
 	{
 		private char correctAnswer;
-		private Question actualQuestion;
 		private int sleepingTime = 3;
+		private QuestionList questionList;
+		private Question actualQuestion;
 
 		public MainWindow()
 		{
 			InitializeComponent();
+			this.questionList = new QuestionList();
+			this.questionList.Load();
 			SetUiElementsContent();
 		}
 
-		private void MakeNewQuestion()
+		public void GetRandomQuestion()
 		{
-			this.actualQuestion = new Question();
+			this.actualQuestion = this.questionList.GetRandomQuestion();
 		}
 
 		private void SetUiElementsContent()
 		{
-			MakeNewQuestion();
+			GetRandomQuestion();
 			questionBlock.Text = this.actualQuestion.Content;
 			answerButtonA.Content = this.actualQuestion.AnswerA;
 			answerButtonB.Content = this.actualQuestion.AnswerB;
@@ -71,8 +74,7 @@ namespace MillionenShowApp
 				answerButtonA.Background = Brushes.Red;
 				this.actualQuestion.CountSolvedWrong += 1;
 			}
-
-			this.actualQuestion.SaveSolvedState();
+			this.questionList.CheckQuestion(this.actualQuestion);
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
@@ -95,8 +97,8 @@ namespace MillionenShowApp
 				answerButtonB.Background = Brushes.Red;
 				this.actualQuestion.CountSolvedWrong += 1;
 			}
+			this.questionList.CheckQuestion(this.actualQuestion);
 
-			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
@@ -118,8 +120,8 @@ namespace MillionenShowApp
 				answerButtonC.Background = Brushes.Red;
 				this.actualQuestion.CountSolvedWrong += 1;
 			}
+			this.questionList.CheckQuestion(this.actualQuestion);
 
-			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
@@ -141,8 +143,8 @@ namespace MillionenShowApp
 				answerButtonD.Background = Brushes.Red;
 				this.actualQuestion.CountSolvedWrong += 1;
 			}
+			this.questionList.CheckQuestion(this.actualQuestion);
 
-			this.actualQuestion.SaveSolvedState();
 
 			await Task.Delay(TimeSpan.FromSeconds(sleepingTime));
 
