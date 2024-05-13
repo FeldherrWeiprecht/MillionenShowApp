@@ -16,17 +16,44 @@ using System.Windows.Shapes;
 
 namespace MillionenShowApp
 {
-	/// <summary>
-	/// Interaktionslogik für StatisticWindow.xaml
-	/// </summary>
 	public partial class StatisticWindow : Window
 	{
-		public StatisticWindow(Window window)
+		public SeriesCollection SeriesCollection { get; set; }
+		public List<string> Labels { get; set; }
+
+		public StatisticWindow(Window window, QuestionList questionList)
 		{
 			InitializeComponent();
-		
+			PrepareData(questionList);
+			DataContext = this;
 		}
 
+		private void PrepareData(QuestionList questionList)
+		{
+			SeriesCollection = new SeriesCollection();
+			Labels = new List<string>();
+
+			foreach (Question question in questionList.questions)
+			{
+				Labels.Add(question.Content);
+
+				// Erstellen Sie den roten Balken für die falsch beantworteten Fragen
+				SeriesCollection.Add(new ColumnSeries
+				{
+					Title = $"{question.Content} (Falsch)",
+					Values = new ChartValues<int> { question.CountSolvedWrong },
+					Fill = Brushes.Red
+				});
+
+				// Erstellen Sie den grünen Balken für die richtig beantworteten Fragen
+				SeriesCollection.Add(new ColumnSeries
+				{
+					Title = $"{question.Content} (Richtig)",
+					Values = new ChartValues<int> { question.CountSolvedCorrect },
+					Fill = Brushes.Green
+				});
+			}
+		}
 
 	}
 }

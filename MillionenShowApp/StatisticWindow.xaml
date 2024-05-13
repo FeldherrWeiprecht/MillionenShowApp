@@ -9,6 +9,14 @@
         Title="StatisticWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
 
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Fragen" Labels="{Binding Labels}"/>
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Anzahl"/>
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
         
     </Grid>
 </Window>

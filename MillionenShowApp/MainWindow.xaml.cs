@@ -155,7 +155,7 @@ namespace MillionenShowApp
 
 		private void statisticWindowConnection_Click(object sender, RoutedEventArgs e)
 		{
-			var statisticWindow = new StatisticWindow(this);
+			var statisticWindow = new StatisticWindow(this, this.questionList);
 			statisticWindow.ShowDialog();
 		}
 	}

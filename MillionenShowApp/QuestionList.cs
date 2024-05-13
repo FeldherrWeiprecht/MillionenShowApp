@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace MillionenShowApp
 {
-	internal class QuestionList
+	public class QuestionList
 	{
-		private List<Question> questions = new List<Question>();
+		public List<Question> questions = new List<Question>();
 
 		public void Load()
 		{
