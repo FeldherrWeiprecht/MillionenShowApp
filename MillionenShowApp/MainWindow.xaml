@@ -6,36 +6,7 @@
         xmlns:local="clr-namespace:MillionenShowApp"
         mc:Ignorable="d"
         Title="MellonenShow" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
-
-    <Window.Resources>
-        <Style TargetType="Button" x:Key="answerButton">
-            <Setter Property="Background" Value="#FDBD9B"/>
-            <Setter Property="Foreground" Value="#333333"/>
-            <Setter Property="FontSize" Value="24"/>
-            <Setter Property="FontFamily" Value="/src/#PTSerif"/>
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        
-                        <Border CornerRadius="20" Background="{TemplateBinding Background}" x:Name="border" Cursor="Hand">
-                            <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </Border>
-                        
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#A19E78"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                        
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-    </Window.Resources>
-    
-    
+  
     <Grid x:Name="main" Background="#5E6C5F">
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -51,12 +22,13 @@
 
         <TextBlock x:Name="questionBlock" Text="Ich bin eine Frage" FontFamily="/src/#Oswald" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="30" FontSize="30" TextWrapping="Wrap" Foreground="#FFFFFF"/>
 
-        <Button x:Name="answerButtonA" Grid.Row="1" Grid.Column="0" Style="{StaticResource answerButton}" Click="answerButtonA_Click" Margin="20"/>
-        <Button x:Name="answerButtonB" Grid.Row="1" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonB_Click" Margin="20"/>
-        <Button x:Name="answerButtonC" Grid.Row="2" Grid.Column="0" Style="{StaticResource answerButton}" Click="answerButtonC_Click" Margin="20"/>
-        <Button x:Name="answerButtonD" Grid.Row="2" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonD_Click" Margin="20"/>
+        <Button x:Name="answerButtonA" Grid.Row="1" Grid.Column="0" Style="{StaticResource answerButton}" Click="answerButtonA_Click"/>
+        <Button x:Name="answerButtonB" Grid.Row="1" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonB_Click"/>
+        <Button x:Name="answerButtonC" Grid.Row="2" Grid.Column="0" Style="{StaticResource answerButton}" Click="answerButtonC_Click"/>
+        <Button x:Name="answerButtonD" Grid.Row="2" Grid.Column="1" Style="{StaticResource answerButton}" Click="answerButtonD_Click"/>
 
-        <Button x:Name="statisticWindowConnection" Content="... zur Fragen Statistik" Grid.Row="3" Grid.Column="1" Style="{StaticResource answerButton}" Click="statisticWindowConnection_Click" Margin="150,5,50,10" Foreground="Black" Background="#f2e8da" FontSize="20"/>
+        <Button x:Name="statisticWindowConnection" Content="... zur Fragen Statistik" Grid.Row="3" Grid.Column="1" Style="{StaticResource otherButton}" Click="statisticWindowConnection_Click" Margin="150,5,50,10" />
+        <Button x:Name="saveAndExitButton" Content="Speichern und Beenden" Grid.Row="3" Grid.Column="0" Style="{StaticResource otherButton}" Click="saveAndExitButton_Click" Margin="50,5,150,10"/>
 
     </Grid>
 </Window>

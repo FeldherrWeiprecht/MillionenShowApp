@@ -3,57 +3,53 @@ using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace MillionenShowApp
 {
 	public partial class StatisticWindow : Window
 	{
+		// Bug: bei manchen Fragen wird vor dem Balken der Content nicht angezeigt!
+
 		public SeriesCollection SeriesCollection { get; set; }
 		public List<string> Labels { get; set; }
+		public Func<double, string> Formatter { get; set; }
 
 		public StatisticWindow(Window window, QuestionList questionList)
 		{
 			InitializeComponent();
-			PrepareData(questionList);
-			DataContext = this;
-		}
 
-		private void PrepareData(QuestionList questionList)
-		{
-			SeriesCollection = new SeriesCollection();
 			Labels = new List<string>();
+			List<int> correctCounts = new List<int>();
+			List<int> wrongCounts = new List<int>();
 
-			foreach (Question question in questionList.questions)
+			var sortedQuestions = questionList.questions.OrderByDescending(q => q.CountSolvedCorrect);
+
+			foreach (Question question in sortedQuestions)
 			{
 				Labels.Add(question.Content);
-
-				// Erstellen Sie den roten Balken für die falsch beantworteten Fragen
-				SeriesCollection.Add(new ColumnSeries
-				{
-					Title = $"{question.Content} (Falsch)",
-					Values = new ChartValues<int> { question.CountSolvedWrong },
-					Fill = Brushes.Red
-				});
-
-				// Erstellen Sie den grünen Balken für die richtig beantworteten Fragen
-				SeriesCollection.Add(new ColumnSeries
-				{
-					Title = $"{question.Content} (Richtig)",
-					Values = new ChartValues<int> { question.CountSolvedCorrect },
-					Fill = Brushes.Green
-				});
+				correctCounts.Add(question.CountSolvedCorrect);
+				wrongCounts.Add(question.CountSolvedWrong);
 			}
-		}
 
+			SeriesCollection = new SeriesCollection
+			{
+				new StackedRowSeries
+				{
+					Title = "Correct",
+					Values = new ChartValues<int>(correctCounts),
+					Fill = System.Windows.Media.Brushes.Green
+				},
+				new StackedRowSeries
+				{
+					Title = "Wrong",
+					Values = new ChartValues<int>(wrongCounts),
+					Fill = System.Windows.Media.Brushes.Red
+				}
+			};
+
+			Formatter = value => value.ToString();
+			DataContext = this;
+		}
 	}
 }

@@ -54,14 +54,17 @@ namespace MillionenShowApp
 
 				using (SqliteCommand command = new SqliteCommand(updateQuery, connection))
 				{
+					command.Parameters.Add("@Id", SqliteType.Integer);
+					command.Parameters.Add("@CountSolvedCorrect", SqliteType.Integer);
+					command.Parameters.Add("@CountSolvedWrong", SqliteType.Integer);
+
 					foreach (Question question in this.questions)
 					{
-						command.Parameters.AddWithValue("@Id", question.Id);
-						command.Parameters.AddWithValue("@CountSolvedCorrect", question.CountSolvedCorrect);
-						command.Parameters.AddWithValue("@CountSolvedWrong", question.CountSolvedWrong);
+						command.Parameters["@Id"].Value = question.Id;
+						command.Parameters["@CountSolvedCorrect"].Value = question.CountSolvedCorrect;
+						command.Parameters["@CountSolvedWrong"].Value = question.CountSolvedWrong;
 
 						command.ExecuteNonQuery();
-
 					}
 				}
 			}
